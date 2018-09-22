@@ -654,23 +654,13 @@ client.on("guildMemberAdd", function(member) {
         const embed = new Discord.RichEmbed()
         .setColor('B90C0C')
         .setAuthor(member.user.tag, member.user.avatarURL)
- .setDescription('** Welcome To ~ Rz Server ~ . **')
+ .setDescription('** Welcome To ~ Rz Server ~ | Owner Server : SoM . **')
 .setThumbnail(member.avatarURL)
-  .setImage('https://www.askideas.com/media/13/Welcome-Deers-Sign.jpg')
         .setTimestamp()
         return wc.sendEmbed(embed);
         
 });
 
-client.on('guildMemberAdd', member => {
-    var embed = new Discord.RichEmbed()
-    .setAuthor(member.user.username, member.user.avatarURL)
-    .setThumbnail(member.user.avatarURL)
-    .setTitle(`عضو جديد`)
-    .setDescription(`اهلا بك في السيرفر`)
-    .addField(' :bust_in_silhouette:  انت رقم',`**[ ${member.guild.memberCount} ]**`,true)
-    .setColor('GREEN')
-    .setFooter('on.Rz Bot .')
 
 var channel =member.guild.channels.find('name', 'chat')
 if (!channel) return;
@@ -684,7 +674,7 @@ if (message.content.startsWith("kick")) {
 
     mention.kick("By: " + message.author.tag);
     
-    message.channel.send("تم أعطاء كيك الى : " + mention.tag);
+    message.channel.send("** تـم إعـطـائـه __كـيـك__ بـنـجـآح . **" + mention.tag);
 };
 });
 
@@ -695,7 +685,7 @@ if (message.content.startsWith("ban")) {
 
     mention.ban("By: " + message.author.tag);
     
-    message.channel.send("تم أعطاء باند الى : " + mention.tag);
+    message.channel.send("** تـم إعـطـائـه __بـآنـد__ بـنـجـآح . **" + mention.tag);
 };
 });
 
@@ -707,7 +697,7 @@ client.on('guildMemberRemove', member => {
     .setDescription(`الى اللقاء...`)
     .addField(':bust_in_silhouette:   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
     .setColor('RED')
-    .setFooter(`The King Bot`, '')
+    .setFooter(`On.Rz Bot .`, '')
 
 var channel =member.guild.channels.find('name', 'remove-members')
 if (!channel) return;
