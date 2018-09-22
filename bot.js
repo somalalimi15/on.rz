@@ -677,6 +677,44 @@ if (!channel) return;
 channel.send({embed : embed});
 });
 
+client.on('message', message => {
+if (message.content.startsWith("kick")) {
+    var mention = message.mentions.members.first();
+    if(!mention) return message.channel.send("**يجب منشن العضو**");
+
+    mention.kick("By: " + message.author.tag);
+    
+    message.channel.send("تم أعطاء كيك الى : " + mention.tag);
+};
+});
+
+client.on('message', message => {
+if (message.content.startsWith("ban")) {
+    var mention = message.mentions.members.first();
+    if(!mention) return message.channel.send("**يجب منشن العضو**");
+
+    mention.ban("By: " + message.author.tag);
+    
+    message.channel.send("تم أعطاء باند الى : " + mention.tag);
+};
+});
+
+client.on('guildMemberRemove', member => {
+    var embed = new Discord.RichEmbed()
+    .setAuthor(member.user.username, member.user.avatarURL)
+    .setThumbnail(member.user.avatarURL)
+    .setTitle(`خرج عضو`)
+    .setDescription(`الى اللقاء...`)
+    .addField(':bust_in_silhouette:   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
+    .setColor('RED')
+    .setFooter(`The King Bot`, '')
+
+var channel =member.guild.channels.find('name', 'remove-members')
+if (!channel) return;
+channel.send({embed : embed});
+});
+
+
 
 client.login(process.env.BOT_TOKEN);
 
