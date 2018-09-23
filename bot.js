@@ -151,7 +151,6 @@ var mentionned = message.mentions.members.first();
     
 
          
-     });
   
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
