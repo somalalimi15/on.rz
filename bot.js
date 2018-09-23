@@ -276,15 +276,11 @@ client.on('message',async message => {
     }
   });
 
-const swearWords = ["كس", "كس امك", "يلعن", "يلعن امك", "حيوان", "كلب", "بزر", "كلمة", "كلمة", "كلمة", "كلمة", "كلمة"]; 
-  if( swearWords.some(word => message.content.includes(word)) ) {
-    message.reply("مَّا يَلْفِظُ مِن قَوْلٍ إِلَّا لَدَيْهِ رَقِيبٌ عَتِيدٌ").then(sentMessage =>{
-      sentMessage.delete(20000)
-    })
-    message.delete(3000)
-    client.channels.get('490528229162221588').send(message.author.toString() + " **استخدم كلام لا يليق** ~")
+client.on('message', msg => {
+  if (msg.content === 'كلب") {
+    msg.reply('مَّا يَلْفِظُ مِن قَوْلٍ إِلَّا لَدَيْهِ رَقِيبٌ عَتِيدٌ');
   }
-
+});
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
