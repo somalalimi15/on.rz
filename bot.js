@@ -284,7 +284,7 @@ const swearWords = ["كس", "كس امك", "يلعن", "يلعن امك", "حي�
     message.delete(3000)
     client.channels.get('490528229162221588').send(message.author.toString() + " **استخدم كلام لا يليق** ~")
   }
-});
+
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
