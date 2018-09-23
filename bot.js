@@ -185,7 +185,7 @@ client.on('message',async message => {
         SPEAK: false
       });
       setInterval(function() {
-        c.setName(`الأعـضآء . : [ ${message.guild.members.size} ]`)
+        c.setName(`الأعـضآء . : [ ${message.guild.members.size} ] ء `)
       },1000);
     });
     }
