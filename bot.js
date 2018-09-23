@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
 const client = new Discord.Client()
-const client = new D.Client();
+
 const moment = require("moment")
 const devs = ['368768446327947265'];
 
