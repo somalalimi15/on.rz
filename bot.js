@@ -112,6 +112,8 @@ client.on('message', function(msg) {
     }
   });
 
+  client.on('message', message => {
+	var prefix = "$";
    if (message.content.startsWith(prefix + "id")) {
                      if(!message.channel.guild) return message.reply(`هذا الأمر فقط ل السيرفرات ❌`);
 
@@ -151,6 +153,7 @@ var mentionned = message.mentions.members.first();
     
 
          
+     });
   
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
