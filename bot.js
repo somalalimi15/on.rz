@@ -167,7 +167,7 @@ client.on('message',async message => {
         SPEAK: false
       });
       setInterval(function() {
-        c.setName(`Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]`)
+        c.setName(`Voice Online . : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]`)
       },1000);
     });
     }
@@ -185,7 +185,7 @@ client.on('message',async message => {
         SPEAK: false
       });
       setInterval(function() {
-        c.setName(`Members Count : [ ${message.guild.members.size} ]`)
+        c.setName(`الأعـضآء . : [ ${message.guild.members.size} ]`)
       },1000);
     });
     }
@@ -278,7 +278,7 @@ client.on('message',async message => {
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`System On.Rz | Owner : SoM .`,"http://twitch.tv/S-F")
+client.user.setGame(`On.Rz | Owner : SoM .`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
