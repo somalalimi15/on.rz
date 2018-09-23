@@ -277,7 +277,7 @@ client.on('message',async message => {
   });
 
 client.on('message', msg => {
-  if (msg.content === 'كلب") {
+  if (msg.content === ''كلب") {
     msg.reply('مَّا يَلْفِظُ مِن قَوْلٍ إِلَّا لَدَيْهِ رَقِيبٌ عَتِيدٌ');
   }
 });
