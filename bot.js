@@ -17,7 +17,7 @@ if (message.content.startsWith("kick")) {
 
     mention.kick("By: " + message.author.tag);
     
-    message.channel.send("تم أعطاء كيك الى : " + mention.tag);
+    message.channel.send("**تـم إعطـائه Kick بِـنجآح ** ");
 };
 });
 
