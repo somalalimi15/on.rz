@@ -36,6 +36,64 @@ client.on('message', msg => {
 }
 });
 	
+    client.on('message' , message => {
+        if(message.content === '$voice onnline in rooms') {
+            message.channel.send(`**عدد الاشخاص الموجودين بـ  الرومات الصوتيه : ${message.guild.members.filter(g => g.voiceChannel).size}**`);
+        }
+        });
+
+client.on('ready',async () => {
+  sendReady('491517470138433536', `**__ تـم تـشـغـيـل الـبـوت بـنـجـاح , On.Rz Bot | Owner Bot : SoM # 1100__**`);
+  
+  function sendReady(channel, message) {
+    client.channels.get(channel).send(message);
+    console.log(message);
+  }
+});
+
+client.on('ready', () => {
+  client.user.setGame('codes_support',`https://www.twitch.tv/`);
+  console.log('codes_support');
+});
+client.on('message', message => {
+ if (message.content.includes('discord.gg')){      //شيل المسافه
+                     if(!message.channel.guild) return message.reply ('')
+                 if (!message.member.hasPermissions(['MANAGE_MESSAGES'])){
+    message.delete() 
+     var member = message.member
+    
+ 
+       
+          member.kick().then((member) => {
+              message.channel.send("", {embed: {
+              author: {
+              },
+              title: 'بسبب النشر ' + member.displayName + ' تم طرد',
+              color: 490101,
+              }
+            });
+        }
+      ) 
+    }
+}
+});
+
+var dat = JSON.parse("{}");
+function forEachObject(obj, func) {
+    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
+}
+client.on("ready", () => {
+    var guild;
+    while (!guild)
+        guild = client.guilds.find("name", "DzGaming Official Server")
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            dat[Inv] = Invite.uses;
+        })
+    })
+})
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 client.user.setGame(`On.Rz | Owner : SoM .`,"http://twitch.tv/S-F")
