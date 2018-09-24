@@ -1,21 +1,12 @@
 const Discord = require("discord.js")
+
 const client = new Discord.Client()
+
 const moment = require("moment")
+
 const devs = ['368768446327947265'];
+
 const prefix = "$"
-
-
-
-client.on('message', message => {
-if (message.content.startsWith("kick")) {
-    var mention = message.mentions.members.first();
-    if(!mention) return message.channel.send("يجب منشن العضو");
-
-    mention.kick("By: " + message.author.tag);
-    
-    message.channel.send("**تـم إعطـائه Kick بــِنجآح ** ");
-};
-});
 
 
 client.on('message', msg => {
