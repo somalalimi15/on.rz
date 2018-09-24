@@ -1,18 +1,11 @@
 const Discord = require("discord.js")
-
 const client = new Discord.Client()
-
 const moment = require("moment")
-
-const devs = ['368768446327947265'];
-
 const prefix = "$"
-
 const fs = require("fs"); 
-
 const ms = require("ms");
 
-
+	
 client.on('message', message => {
     if (message.author.id === client.user.id) return;
             if (message.content.startsWith(prefix + "On.RzPing")) {
@@ -105,13 +98,6 @@ var mentionned = message.mentions.members.first();
          
      });
 
-client.on('message', message=> {
-    if (message.author.bot) return;
-    if (message.isMentioned(client.user))
-    {
-    message.reply("**آمـرني ي بـعدي . ! **");
-    }
-});
 
 client.on('message', function(msg) {
     if(msg.content.startsWith (prefix  + 'server')) {
