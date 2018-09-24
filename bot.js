@@ -4,7 +4,8 @@ const moment = require("moment")
 const prefix = "$"
 const fs = require("fs"); 
 const ms = require("ms");
-
+client.on('message', message => {
+client.on('message', function(msg) {		
 	
 client.on('message', message => {
     if (message.author.id === client.user.id) return;
