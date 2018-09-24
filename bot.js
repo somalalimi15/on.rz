@@ -293,14 +293,6 @@ client.on('message', message => {
     }
 });
 
-client.on("message", message => {
-  if(message.content.startsWith("OffOn.Rz")) {
-  if(message.author.id === "368768446327947265") { //اي ديك
-    message.channel.send(' **سيتم اطفاء البوت** ')
-    process.kill(process.pid)
-  } else return;
-}})
-
 client.on("guildMemberAdd", m => {
     if (datediff(parseDate(moment(m.user.createdTimestamp).format('l')), parseDate(moment().format('l'))) < 8) {
         m.ban();
@@ -315,24 +307,78 @@ function datediff(first, second) {
     return Math.round((second-first)/(1000*60*60*24));
 };
 
-client.on('guildMemberAdd', Sal => { //By Salto7#4595
-    var embed = new Discord.RichEmbed()
-    .setAuthor(Sal.user.username, Sal.user.avatarURL)
-    .setThumbnail(Sal.user.avatarURL)
-    .setImage('http://live-timely-4jepdssgmc.time.ly/wp-content/uploads/2018/08/welcomeEvents.jpg') //هنا حط الصوره الي تبيها
-    .setTitle('عضو جديد!')
-    .setDescription('مرحبا بك بالسيرفر')
-    .addField('``ايدي العضو``:',"" +  Sal.user.id, true)
-    .addField('``تاق العضو``', Sal.user.discriminator, true)
-    .addField('``تم الانشاء في``', Sal.user.createdAt, true)
-    .addField(' 👤  انت رقم',`**[ ${Sal.guild.memberCount} ]**`,true)
-    .setColor('RANDOM')
-    .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
-    var channel =Sal.guild.channels.find('name', 'chat') // هنا حط اسم الروم الي تبيه يكتب فيه
-    if (!channel) return;
-    channel.send({embed : embed});
+client.on('message', function(message) {
+  if (message.content.startsWith(prefix + 'info')) {
+  message.delete;
+  message.channel.send("", {
+      embed: {
+          color : 0xE15306,
+  author :{name: message.author.name},
+          description : "",
+          title : "Server Info",
+          fields : [
+              {
+   name : '**Server Name**',
+   value : message.guild.name,
+   inline : true
+            },{
+   name : '**Owner**',
+   value : message.guild.owner.user.tag,
+   inline : true
+ },{
+    name :'**Verification Level**',
+    value : message.guild.verificationLevel,
+    inline : true
+ },{
+    name : '**Region**',
+    value : message.guild.region,
+    inline : true
+ },{
+   name : '**Members Count**',
+   value : message.guild.memberCount,
+   inline : true
+ },{
+   name : '**Humans**',
+   value : message.guild.members.filter(m => m.user).size,
+   inline : true
+ },{
+   name : '**Bots**',
+   value : message.guild.members.filter(m => m.user.bot).size,
+   inline : true
+ }],
+},
+footer : {
+   text : 'RANDOM'
+          }
     });
-
+}
+	
+client.on('voiceStateUpdate', (o,n) => {
+    if (o.voiceChannel && !n.voiceChannel) {
+        ss-=1
+        n.guild.channels.get("493663038344396811").edit({
+            name : "Voice Online : [" + ss+ "]"
+        })
+    };
+    if (n.voiceChannel && !o.voiceChannel) {
+        ss+=1
+        n.guild.channels.get("493663038344396811").edit({
+            name : "Voice Online : [" + ss+ "]"
+        })
+    }
+})
+client.on("ready", () => {
+    client.guilds.get("487908968249950208").members.forEach(m => {
+        if (m.voiceChannel) {
+            ss+=1
+        };
+        client.channels.get("493663038344396811").edit({
+            name : "Voice Online : [" + ss+ "]"
+        })
+    });
+    client.user.setGame("Truth Server  ©", "https://twitch.tv/©");
+});
+	
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 client.user.setGame(`On.Rz | Owner : SoM .`,"http://twitch.tv/S-F")
