@@ -6,11 +6,6 @@ const devs = ['368768446327947265'];
 
 const prefix = "$"
 
-        client.on('ready', () => {
-            client.user.setActivity("On.Rz . Owner : SoM .",{type: 'streaming'});
-       
-       });
-
 client.on('message', message => {
 if (message.content.startsWith("kick")) {
     var mention = message.mentions.members.first();
@@ -39,23 +34,6 @@ client.on('message', msg => {
   let command = msg.content.split(" ")[0];
   command = command.slice(prefix.length);
   let args = msg.content.split(" ").slice(1);
-
-    if(command === "مسحح") {
-        const emoji = client.emojis.find("name", "wastebasket")
-    let textxt = args.slice(0).join("");
-    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-    if (textxt == "") {
-        msg.delete().then
-    msg.channel.send("**ضع عدد الرسائل التي تريد مسحها **").then(m => m.delete(3000));
-} else {
-    msg.delete().then
-    msg.delete().then
-    msg.channel.bulkDelete(textxt);
-        msg.channel.send("```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
-        }    
-    }
-}
-});
 
 client.on('message', message => {
 
@@ -192,91 +170,6 @@ client.on('message',async message => {
     }
   });
 
-    
-  client.on('message',async message => {
-    if(message.content.startsWith(prefix + "setTime")) {
-    if(!message.guild.member(message.author).hasPermission('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
-    if(!message.guild.member(client.user).hasPermission(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات الكافية**');
-    message.channel.send('✅| **تم عمل الروم بنجاح**');
-    message.guild.createChannel("🕐 - Time  00", 'voice').then((c) => {
-      console.log(`Time channel setup for guild: \n ${message.guild.name}`);
-      c.overwritePermissions(message.guild.id, {
-        CONNECT: false,
-        SPEAK: false
-      });
-          setInterval(function() {
-
-        var currentTime = new Date(),
-        hours = currentTime.getHours() + 3 ,
-        minutes = currentTime.getMinutes(),
-        seconds = currentTime.getSeconds(),
-        years = currentTime.getFullYear(),
-        month = currentTime.getMonth(),
-        day = currentTime.getDate(),
-        week = currentTime.getDay();
-
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }
-        var suffix = "AM";
-        if (hours >= 12) {
-            suffix = "PM";
-            hours = hours - 12;
-        }
-        if (hours == 0) {
-            hours = 12;
-        }
-
-        c.setName("🕐 - Time   「" + hours + ":" + minutes  +" " + suffix + "」");
-      },1000);
-    });
-    }
-  });
-
-
-  
-  client.on('message',async message => {
-    if(message.content.startsWith(prefix + "setDate")) {
-        var currentTime = new Date(),
-        years = currentTime.getFullYear(),
-        month = currentTime.getMonth() + 1,
-        day = currentTime.getDate(),
-        week = currentTime.getDay();
-    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
-    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات الكافية**');
-    message.channel.send('✅| **تم عمل الروم بنجاح**');
-    message.guild.createChannel("📅 - Date " + "「" + day + "-" + month + "-" + years + "」" , 'voice').then(c => {
-      console.log(`Date channel setup for guild: \n ${message.guild.name}`);
-      c.overwritePermissions(message.guild.id, {
-        CONNECT: false,
-        SPEAK: false
-      });
-      setInterval(function() {
-        c.setName("📅 - Date " + "「" + day + "-" + month + "-" + years + "」")
-      },1000);
-    });
-    }
-  });
-
-client.on('message',async message => {
-  var moment = require('moment');
-    if(message.content.startsWith(prefix + "setDays")) {
-    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
-    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات الكافية**');
-    message.channel.send('✅| **تم عمل الروم بنجاح**');
-    message.guild.createChannel(`Day : ${moment().format('dddd')}` , 'voice').then(c => {
-      console.log(`Day channel setup for guild: \n ${message.guild.name}`);
-      c.overwritePermissions(message.guild.id, {
-        CONNECT: false,
-        SPEAK: false
-      });
-      setInterval(function() {
-        c.setName(`📅 - Day : 「${moment().format('dddd')}」`);
-      },1000);
-    });
-    }
-  });
-
 client.on('message', msg => {
   if (msg.content === 'كلب') {
     msg.reply('مَّا يَلْفِظُ مِن قَوْلٍ إِلَّا لَدَيْهِ رَقِيبٌ عَتِيدٌ');
@@ -353,33 +246,6 @@ footer : {
     });
 }
 
-var ss = 0;
-	
-client.on('voiceStateUpdate', (o,n) => {
-    if (o.voiceChannel && !n.voiceChannel) {
-        ss-=1
-        n.guild.channels.get("493663038344396811").edit({
-            name : "Voice Online : [" + ss+ "]"
-        })
-    };
-    if (n.voiceChannel && !o.voiceChannel) {
-        ss+=1
-        n.guild.channels.get("493663038344396811").edit({
-            name : "Voice Online : [" + ss+ "]"
-        })
-    }
-})
-client.on("ready", () => {
-    client.guilds.get("487908968249950208").members.forEach(m => {
-        if (m.voiceChannel) {
-            ss+=1
-        };
-        client.channels.get("493663038344396811").edit({
-            name : "Voice Online : [" + ss+ "]"
-        })
-    });
-    client.user.setGame("Truth Server  ©", "https://twitch.tv/©");
-});
 	
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
