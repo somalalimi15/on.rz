@@ -1,10 +1,10 @@
 const Discord = require("discord.js")
 const client = new Discord.Client()
-
 const moment = require("moment")
 const devs = ['368768446327947265'];
-
 const prefix = "$"
+
+
 
 client.on('message', message => {
 if (message.content.startsWith("kick")) {
@@ -141,17 +141,16 @@ client.on('message', msg => {
   }
 });
 
-client.on('message', message => {
-    if(message.channel.type === 'dm') {
-        var guildID = '487908968249950208'; // <=============== ايدي السيرفر حقك
-        if(message.content.includes('discord.gg/')) {
-            var member = client.guilds.find(g => g.id === guildID).members.find(m => m.id === message.author.id);
-            member.ban({ reason: 'ADS In Private.' }).catch();
-        }
+	  client.on('message', message => {
+    if(message.content.includes('discord.gg')){
+                                            if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
+        if (!message.member.hasPermissions(['ADMINISTRATOR'])){
+        message.delete()
+    return message.reply(`**ممـنوع النـشر هـنآ ي قـلبي . " **`)
     }
+}
 });
-
-
+	
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 client.user.setGame(`On.Rz | Owner : SoM .`,"http://twitch.tv/S-F")
