@@ -352,6 +352,8 @@ footer : {
           }
     });
 }
+
+var ss = 0;
 	
 client.on('voiceStateUpdate', (o,n) => {
     if (o.voiceChannel && !n.voiceChannel) {
@@ -367,9 +369,6 @@ client.on('voiceStateUpdate', (o,n) => {
         })
     }
 })
-	
-var ss = 0;
-	
 client.on("ready", () => {
     client.guilds.get("487908968249950208").members.forEach(m => {
         if (m.voiceChannel) {
