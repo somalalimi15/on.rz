@@ -17,16 +17,6 @@ if (message.content.startsWith("kick")) {
 };
 });
 
-client.on('message', message => {
-if (message.content.startsWith("بآند")) {
-    var mention = message.mentions.members.first();
-    if(!mention) return message.channel.send("يجب منشن العضو");
-
-    mention.ban("By: " + message.author.tag);
-    
-    message.channel.send("**تـم إعطـائه Ban بــِنجآح **");
-};
-});
 
 client.on('message', msg => {
   if (msg.author.bot) return;
