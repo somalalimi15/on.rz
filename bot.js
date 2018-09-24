@@ -66,42 +66,49 @@ client.on('message', function(msg) {
     }
   });
 
-client.on('message', msg => {
-  if (msg.author.bot) return;
-  if (!msg.content.startsWith(prefix)) return;
-  let command = msg.content.split(" ")[0];
-  command = command.slice(prefix.length);
-  let args = msg.content.split(" ").slice(1);
 
-client.on('message', message => {
+	
+	
+	client.on('message', message => {
 
-    if (message.content === "قفل") {
-                        if(!message.channel.guild) return message.reply(' This command only for servers');
+if (message.author.bot) return;
+  if (message.content.split(" ")[0].toLowerCase() === prefix + "قفل") {
+                        if(!message.channel.guild) return;
 
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You Need MANAGE_MESSAGES Permission').then(message => message.delete(5000))
            message.channel.overwritePermissions(message.guild.id, {
          SEND_MESSAGES: false
 
            }).then(() => {
-               message.reply("**تم تقفيل الشات :white_check_mark: **")
-           });
+ const e = new Discord.RichEmbed()
+               .setAuthor('Channel Disabled By : '+message.author.username)
+                .setColor('#36393e')
+               
+               message.channel.send(e)
+               });
              }
-//™¦༺♚ƙἶղց|MaS♚༺¦™#7105
-if (message.content === "فتح") {
-    if(!message.channel.guild) return message.reply(' This command only for servers');
+if (message.content.split(" ")[0].toLowerCase() === prefix + "فتح") {
+    if(!message.channel.guild) return;
 
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You Need MANAGE_MESSAGES Permission').then(message => message.delete(5000))
            message.channel.overwritePermissions(message.guild.id, {
          SEND_MESSAGES: true
 
            }).then(() => {
-               message.reply("**تم فتح الشات:white_check_mark: **")
+               const e = new Discord.RichEmbed()
+               .setAuthor('Channel Enabled By : '+message.author.username)
+                        .setColor('#36393e')
+               
+               message.channel.send(e)
            });
              }
 
 
 
 });
+	
+	
+	
 	
 	
 client.on('message', message => {
@@ -186,4 +193,3 @@ client.user.setGame(`On.Rz | Owner : SoM .`,"http://twitch.tv/S-F")
 
 
 client.login(process.env.BOT_TOKEN);
-
